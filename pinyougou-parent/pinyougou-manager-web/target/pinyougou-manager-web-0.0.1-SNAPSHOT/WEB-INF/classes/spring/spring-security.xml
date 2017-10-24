@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:bean="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security-4.1.xsd">
+
+	<http pattern="/login.html" security="none"></http>
+	<http pattern="/css/**" security="none"></http>
+	<http pattern="/img/**" security="none"></http>
+	<http pattern="/js/**" security="none"></http>
+	<http pattern="/plugins/**" security="none"></http>
+	<http pattern="/gen_item.do" security="none"></http>
+
+	<http use-expressions="false">
+		<intercept-url pattern="/**" access="ROLE_ADMIN" />
+		<form-login  login-page="/login.html"
+			default-target-url="/admin/index.html" authentication-failure-url="/login.html" always-use-default-target="true"/>
+		<csrf disabled="true" />
+		<logout />
+		<headers>
+			<frame-options policy="SAMEORIGIN" />
+		</headers>
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="dailai" password="100200" authorities="ROLE_ADMIN" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+
+</bean:beans>

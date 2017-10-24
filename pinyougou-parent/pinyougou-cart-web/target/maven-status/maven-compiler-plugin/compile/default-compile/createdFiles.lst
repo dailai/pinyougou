@@ -1,0 +1,6 @@
+com\pinyougou\cart\controller\LoginController.class
+com\pinyougou\user\service\UserDetailsServiceImpl.class
+com\pinyougou\cart\controller\OrderController.class
+com\pinyougou\cart\controller\CartController.class
+com\pinyougou\cart\controller\AddressController.class
+com\pinyougou\cart\controller\PayController.class
